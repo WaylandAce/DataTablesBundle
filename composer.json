@@ -1,5 +1,5 @@
 {
-    "name": "webinarium/datatables-bundle",
+    "name": "waylandace/datatables-bundle",
     "description": "DataTables Symfony bundle",
     "type": "symfony-bundle",
     "keywords": ["datatable", "datatables"],
