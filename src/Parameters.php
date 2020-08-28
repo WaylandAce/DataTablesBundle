@@ -20,9 +20,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int   $draw       Draw counter.
- * @property int   $start      Index of first row to return, zero-based.
- * @property int   $length     Total number of rows to return (-1 to return all rows).
+ * @property int $draw       Draw counter.
+ * @property int $start      Index of first row to return, zero-based.
+ * @property int $length     Total number of rows to return (-1 to return all rows).
  * @property array $search     Global search value.
  * @property array $order      Columns ordering (zero-based column index and direction).
  * @property array $columns    Columns information (searchable, orderable, search value, etc).

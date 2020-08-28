@@ -46,7 +46,7 @@ class DataTablesExtension extends Extension implements CompilerPassInterface
         }
 
         $definition = $container->findDefinition('datatables');
-        $services   = $container->findTaggedServiceIds('datatable');
+        $services = $container->findTaggedServiceIds('datatable');
 
         /** @var array $tags */
         foreach ($services as $id => $tags) {

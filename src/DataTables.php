@@ -31,12 +31,12 @@ class DataTables implements DataTablesInterface
     /**
      * Dependency Injection constructor.
      *
-     * @param LoggerInterface    $logger
+     * @param LoggerInterface $logger
      * @param ValidatorInterface $validator
      */
     public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
-        $this->logger    = $logger;
+        $this->logger = $logger;
         $this->validator = $validator;
     }
 
@@ -44,7 +44,7 @@ class DataTables implements DataTablesInterface
      * Registers specified DataTable handler.
      *
      * @param DataTableHandlerInterface $service Service of the DataTable handler.
-     * @param string                    $id      DataTable ID.
+     * @param string $id DataTable ID.
      */
     public function addService(DataTableHandlerInterface $service, string $id = null)
     {
@@ -74,11 +74,11 @@ class DataTables implements DataTablesInterface
             'columns',
         ];
 
-        $params->draw    = $request->get('draw');
-        $params->start   = $request->get('start');
-        $params->length  = $request->get('length');
-        $params->search  = $request->get('search');
-        $params->order   = $request->get('order');
+        $params->draw = $request->get('draw');
+        $params->start = $request->get('start');
+        $params->length = $request->get('length');
+        $params->search = $request->get('search');
+        $params->order = $request->get('order');
         $params->columns = $request->get('columns');
 
         $allParams = $request->isMethod(Request::METHOD_POST)
@@ -113,12 +113,10 @@ class DataTables implements DataTablesInterface
 
         try {
             $result = $this->services[$id]->handle($query);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), [$this->services[$id]]);
             throw new DataTableException($e->getMessage());
-        }
-        finally {
+        } finally {
             $timer_stopped = microtime(true);
             $this->logger->debug('DataTable processing time', [$timer_stopped - $timer_started, $this->services[$id]]);
         }

@@ -20,16 +20,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int   $recordsTotal    Total records, before filtering.
- * @property int   $recordsFiltered Total records, after filtering.
+ * @property int $recordsTotal    Total records, before filtering.
+ * @property int $recordsFiltered Total records, after filtering.
  * @property array $data            The data to be displayed in the table.
  */
 class DataTableResults implements \JsonSerializable
 {
-    const DT_ROW_ID    = 'DT_RowId';
+    const DT_ROW_ID = 'DT_RowId';
     const DT_ROW_CLASS = 'DT_RowClass';
-    const DT_ROW_DATA  = 'DT_RowData';
-    const DT_ROW_ATTR  = 'DT_RowAttr';
+    const DT_ROW_DATA = 'DT_RowData';
+    const DT_ROW_ATTR = 'DT_RowAttr';
 
     /**
      * @Assert\NotNull
@@ -63,10 +63,10 @@ class DataTableResults implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'draw'            => (int) $this->draw,
-            'recordsTotal'    => (int) $this->recordsTotal,
-            'recordsFiltered' => (int) $this->recordsFiltered,
-            'data'            => $this->data,
+            'draw' => (int)$this->draw,
+            'recordsTotal' => (int)$this->recordsTotal,
+            'recordsFiltered' => (int)$this->recordsFiltered,
+            'data' => $this->data,
         ];
     }
 }

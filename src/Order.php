@@ -18,12 +18,12 @@ namespace DataTables;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int    $column Column to which ordering should be applied.
+ * @property int $column Column to which ordering should be applied.
  * @property string $dir    Ordering direction for this column.
  */
 class Order extends ValueObject implements \JsonSerializable
 {
-    const ASC  = 'asc';
+    const ASC = 'asc';
     const DESC = 'desc';
 
     protected $column;
@@ -32,13 +32,13 @@ class Order extends ValueObject implements \JsonSerializable
     /**
      * Initializing constructor.
      *
-     * @param int    $column
+     * @param int $column
      * @param string $dir
      */
     public function __construct(int $column, string $dir)
     {
         $this->column = $column;
-        $this->dir    = $dir;
+        $this->dir = $dir;
     }
 
     /**
@@ -48,7 +48,7 @@ class Order extends ValueObject implements \JsonSerializable
     {
         return [
             'column' => $this->column,
-            'dir'    => $this->dir,
+            'dir' => $this->dir,
         ];
     }
 }

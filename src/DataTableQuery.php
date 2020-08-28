@@ -18,12 +18,12 @@ namespace DataTables;
  *
  * @see https://www.datatables.net/manual/server-side
  *
- * @property int      $start      Index of first row to return, zero-based.
- * @property int      $length     Total number of rows to return (-1 to return all rows).
- * @property Search   $search     Global search value.
- * @property Order[]  $order      Columns ordering (zero-based column index and direction).
+ * @property int $start      Index of first row to return, zero-based.
+ * @property int $length     Total number of rows to return (-1 to return all rows).
+ * @property Search $search     Global search value.
+ * @property Order[] $order      Columns ordering (zero-based column index and direction).
  * @property Column[] $columns    Columns information (searchable, orderable, search value, etc).
- * @property array    $customData Custom data from DataTables.
+ * @property array $customData Custom data from DataTables.
  */
 class DataTableQuery extends ValueObject implements \JsonSerializable
 {
@@ -41,17 +41,17 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
      */
     public function __construct(Parameters $params)
     {
-        $this->start  = (int) $params->start;
-        $this->length = (int) $params->length;
+        $this->start = (int)$params->start;
+        $this->length = (int)$params->length;
 
         $this->search = new Search(
             $params->search['value'],
-            (bool) $params->search['regex']
+            (bool)$params->search['regex']
         );
 
         $this->order = array_map(function (array $order) {
             return new Order(
-                (int) $order['column'],
+                (int)$order['column'],
                 $order['dir']
             );
         }, $params->order);
@@ -60,9 +60,9 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
             return new Column(
                 $column['data'],
                 $column['name'],
-                (bool) $column['searchable'],
-                (bool) $column['orderable'],
-                new Search($column['search']['value'], (bool) $column['search']['regex'])
+                (bool)$column['searchable'],
+                (bool)$column['orderable'],
+                new Search($column['search']['value'], (bool)$column['search']['regex'])
             );
         }, $params->columns);
 
@@ -79,10 +79,10 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
         };
 
         return [
-            'start'   => $this->start,
-            'length'  => $this->length,
-            'search'  => $this->search->jsonSerialize(),
-            'order'   => array_map($callback, $this->order),
+            'start' => $this->start,
+            'length' => $this->length,
+            'search' => $this->search->jsonSerialize(),
+            'order' => array_map($callback, $this->order),
             'columns' => array_map($callback, $this->columns),
         ];
     }

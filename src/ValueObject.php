@@ -35,9 +35,9 @@ class ValueObject
      *
      * @param string $name Name of the property.
      *
+     * @return mixed Current value of the property.
      * @throws \BadMethodCallException If the property doesn't exist.
      *
-     * @return mixed Current value of the property.
      */
     public function __get(string $name)
     {
@@ -51,8 +51,8 @@ class ValueObject
     /**
      * Prevents object's properties from modification.
      *
-     * @param string $name  Name of the property.
-     * @param mixed  $value New value of the property.
+     * @param string $name Name of the property.
+     * @param mixed $value New value of the property.
      */
     final public function __set(string $name, $value)
     {

@@ -1,5 +1,5 @@
 services:
-    datatables:
-        public: true
-        class: DataTables\DataTables
-        arguments: [ '@logger', '@validator' ]
+  datatables:
+    public: true
+    class: DataTables\DataTables
+    arguments: [ '@logger', '@validator' ]

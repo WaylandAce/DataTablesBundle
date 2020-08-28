@@ -20,8 +20,8 @@ namespace DataTables;
  *
  * @property string $data       Column's data source.
  * @property string $name       Column's name.
- * @property bool   $searchable Flag to indicate if this column is searchable or not.
- * @property bool   $orderable  Flag to indicate if this column is orderable or not.
+ * @property bool $searchable Flag to indicate if this column is searchable or not.
+ * @property bool $orderable  Flag to indicate if this column is orderable or not.
  * @property Search $search     Search value to apply to this specific column.
  */
 class Column extends ValueObject implements \JsonSerializable
@@ -37,17 +37,17 @@ class Column extends ValueObject implements \JsonSerializable
      *
      * @param string $data
      * @param string $name
-     * @param bool   $searchable
-     * @param bool   $orderable
+     * @param bool $searchable
+     * @param bool $orderable
      * @param Search $search
      */
     public function __construct(string $data, string $name, bool $searchable, bool $orderable, Search $search)
     {
-        $this->data       = $data;
-        $this->name       = $name;
+        $this->data = $data;
+        $this->name = $name;
         $this->searchable = $searchable;
-        $this->orderable  = $orderable;
-        $this->search     = $search;
+        $this->orderable = $orderable;
+        $this->search = $search;
     }
 
     /**
@@ -56,11 +56,11 @@ class Column extends ValueObject implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'data'       => $this->data,
-            'name'       => $this->name,
+            'data' => $this->data,
+            'name' => $this->name,
             'searchable' => $this->searchable,
-            'orderable'  => $this->orderable,
-            'search'     => $this->search->jsonSerialize(),
+            'orderable' => $this->orderable,
+            'search' => $this->search->jsonSerialize(),
         ];
     }
 }
